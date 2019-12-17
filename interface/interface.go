@@ -5,6 +5,9 @@ import (
 	"math"
 )
 
+// interface(インタフェース)型は、メソッドのシグニチャの集まりで定義します。
+// そのメソッドの集まりを実装した値を、interface型の変数へ持たせることができます。
+
 type Abser interface {
 	Abs() float64
 }
@@ -12,14 +15,12 @@ type Abser interface {
 func main() {
 	var a Abser
 	f := MyFloat(-math.Sqrt2)
+	fmt.Println("fの値:", f)
 	v := Vertex{3, 4}
 
 	a = f  // a MyFloat implements Abser
 	a = &v // a *Vertex implements Abser
-
-	// In the following line, v is a Vertex (not *Vertex)
-	// and does NOT implement Abser.
-	// a = v
+	fmt.Println("aの値:", a)
 
 	fmt.Println(a.Abs())
 }
